@@ -14,7 +14,7 @@ def split_segment(input_file, start_time, segment_length, output_file):
     """
     ffmpeg.input(input_file, ss=start_time, t=segment_length).output(output_file).run()
 
-def split_mp3(input_file, output_dir='.', segment_length=600, num_workers=6):
+def split_mp3(input_file, output_dir='.', segment_length=600, num_workers=30):
     """
     Splits an MP3 file into segments of a specified length using ffmpeg-python.
 
@@ -47,9 +47,8 @@ def split_mp3(input_file, output_dir='.', segment_length=600, num_workers=6):
 
 if __name__ == "__main__":
     input_mp3 = "test.mp3"
-    split_mp3(input_mp3, "./10_m")
-    split_mp3(input_mp3, "./15_m")
-    split_mp3(input_mp3, "./20_m")
-    split_mp3(input_mp3, "./30_m")
-    split_mp3(input_mp3, "./60_m")
+    split_mp3(input_mp3, "./15_m", segment_length=900)
+    split_mp3(input_mp3, "./20_m", segment_length=1200)
+    split_mp3(input_mp3, "./30_m", segment_length=800)
+    split_mp3(input_mp3, "./60_m", segment_length=3600)
 
